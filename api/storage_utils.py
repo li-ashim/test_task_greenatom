@@ -20,7 +20,7 @@ class MinioClientManager:
 
     @classmethod
     def initialize(cls,
-                   endpoint: str = '192.168.1.7:9000',
+                   endpoint: str = '127.0.0.1:9000',
                    access_key: str = 'minioadmin',
                    secret_key: str = 'minioadmin',
                    secure: bool = False) -> Minio:
@@ -82,7 +82,7 @@ def get_images(request_code: str) -> list[Image]:
     except ValueError:
         raise HTTPException(
             status_code=400,
-            detail=f'Incorrect request code: "{request_code}"'
+            detail=f'Incorrect request code: {request_code}'
         )
     else:
         res = []
