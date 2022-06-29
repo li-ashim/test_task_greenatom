@@ -1,0 +1,17 @@
+services:
+
+  api:
+    build: .
+    environment:
+      - MINIO_HOST=objects:9000
+    command: python -m uvicorn --host 0.0.0.0 --port 8000 api.main:app
+    ports:
+      - 8000:8000
+    depends_on:
+      - objects
+
+  objects:
+    image: minio/minio:latest
+    command: server /data
+    expose:
+      - 9000

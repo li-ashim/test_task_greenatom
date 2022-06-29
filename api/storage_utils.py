@@ -20,7 +20,7 @@ class MinioClientManager:
 
     @classmethod
     def initialize(cls,
-                   endpoint: str = '127.0.0.1:9000',
+                   endpoint: str = os.environ['MINIO_HOST'],
                    access_key: str = 'minioadmin',
                    secret_key: str = 'minioadmin',
                    secure: bool = False) -> Minio:
